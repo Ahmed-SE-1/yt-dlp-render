@@ -3,5 +3,17 @@ services:
     name: vf-dip-backend
     env: docker
     plan: free
+    region: singapore # or your preferred region
+    disk:
+      name: video_storage
+      mountPath: /var/data
+      sizeGB: 1
     docker:
+      dockerfile: Dockerfile
       buildTimeout: 1800
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RENDER
+        value: "true"
