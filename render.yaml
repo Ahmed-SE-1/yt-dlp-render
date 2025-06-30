@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: vf-dip-backend
+    env: docker
+    plan: free
+    docker:
+      buildTimeout: 1800
