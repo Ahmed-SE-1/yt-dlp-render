@@ -7,12 +7,9 @@ const path = require('path');
 const app = express();
 
 // ============================================
-// ENHANCEMENT: Render.com compatibility layer
 // ============================================
-const IS_RENDER = process.env.RENDER === 'true';
-const downloadsDir = IS_RENDER 
-  ? '/var/data/downloads'  // Render persistent storage
-  : path.join(__dirname, 'downloads'); // Local development
+const IS_RENDER = false; // Disable Render-specific logic for now
+const downloadsDir = '/var/data/downloads'; // Use Fly.io persistent storage
 
 // ============================================
 // ORIGINAL MIDDLEWARE (unchanged)
@@ -250,7 +247,7 @@ const server = app.listen(PORT, () => {
   ====================================
   🚀 Server running on port ${PORT}
   📂 Downloads directory: ${downloadsDir}
-  🌐 Environment: ${IS_RENDER ? 'Render.com' : 'Local'}
+  // 🌐 Environment: ${IS_RENDER ? 'Render.com' : 'Local'}
   ====================================
   `);
   
